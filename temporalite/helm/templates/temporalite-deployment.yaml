@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: temporalite
+spec:
+  selector:
+    matchLabels:
+      app: temporalite
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: temporalite
+    spec:
+      containers:
+        - name: temporalite
+          image: temporalite-image
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 7233
+            - containerPort: 8233
+          resources: {}
