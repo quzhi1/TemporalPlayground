@@ -10,7 +10,9 @@ go test
 
 ## Manual run
 ```bash
-go run worker/main.go # Terminal will freeze
+go run worker1/main.go # Terminal will freeze
+# Open another terminal
+go run worker2/main.go # Terminal will freeze
 # Open another terminal
 go run start/main.go
 ```
