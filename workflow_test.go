@@ -13,10 +13,11 @@ func Test_Workflow(t *testing.T) {
 	env := testSuite.NewTestWorkflowEnvironment()
 	// Mock activity implementation
 	env.OnActivity(ComposeGreeting, mock.Anything).Return("Hello World!", nil)
+	env.OnActivity(ComposeGoodbye, mock.Anything).Return("Goodbye World!", nil)
 	env.ExecuteWorkflow(GreetingWorkflow, "World")
 	require.True(t, env.IsWorkflowCompleted())
 	require.NoError(t, env.GetWorkflowError())
 	var greeting string
 	require.NoError(t, env.GetWorkflowResult(&greeting))
-	require.Equal(t, "Hello World!", greeting)
+	require.Equal(t, "Hello World!; Goodbye World!", greeting)
 }
